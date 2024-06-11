@@ -8,6 +8,9 @@ import {
   ServerIcon,
 } from '@heroicons/react/20/solid'
 import { BoltIcon, CalendarDaysIcon, UsersIcon } from '@heroicons/react/24/outline'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ProfilePage from './pages/profilePage'
 
 const primaryFeatures = [
   {
@@ -163,6 +166,11 @@ const footerNavigation = {
 export default function Example() {
   return (
     <div className="bg-gray-900">
+      <Router>   // This is temporary because I need a way to route to the profile page
+        <Routes>
+          <Route path="/profile" element={<ProfilePage />} />
+        </Routes>
+      </Router>
       <main>
         {/* Hero section */}
         <div className="relative isolate overflow-hidden">
