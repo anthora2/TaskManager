@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 
 export default function ProfilePage() {
     const [profilePic, setProfilePic] = useState("https://avatars0.githubusercontent.com/u/35900628?v=4");
+    const [firstName, setFirstName] = useState("Pantazi");
+    const [lastName, setLastName] = useState("Software");
+    const [editingFirstName, setEditingFirstName] = useState(false);
+    const [editingLastName, setEditingLastName] = useState(false);
 
     const handleProfilePicChange = (event) => {
         const file = event.target.files[0];
@@ -12,6 +16,22 @@ export default function ProfilePage() {
             };
             reader.readAsDataURL(file);
         }
+    };
+
+    const handleFirstNameChange = (event) => {
+        setFirstName(event.target.value);
+    };
+
+    const handleLastNameChange = (event) => {
+        setLastName(event.target.value);
+    };
+
+    const handleFirstNameBlur = () => {
+        setEditingFirstName(false);
+    };
+
+    const handleLastNameBlur = () => {
+        setEditingLastName(false);
     };
 
     return (
@@ -37,25 +57,60 @@ export default function ProfilePage() {
                         </div>
 
                         <div className="mt-16 text-center">
-                            <h1 className="font-bold text-3xl text-gray-900">Pantazi Software</h1>
-                            <p className="text-sm text-gray-400 font-medium">UI Components Factory</p>
+                            {editingFirstName ? (
+                                <input
+                                    type="text"
+                                    value={firstName}
+                                    onChange={handleFirstNameChange}
+                                    onBlur={handleFirstNameBlur}
+                                    autoFocus
+                                    className="font-bold text-3xl text-gray-900"
+                                />
+                            ) : (
+                                <h1
+                                    className="font-bold text-3xl text-gray-900 cursor-pointer"
+                                    onClick={() => setEditingFirstName(true)}
+                                >
+                                    {firstName}
+                                </h1>
+                            )}
+
+                            {editingLastName ? (
+                                <input
+                                    type="text"
+                                    value={lastName}
+                                    onChange={handleLastNameChange}
+                                    onBlur={handleLastNameBlur}
+                                    autoFocus
+                                    className="font-bold text-3xl text-gray-900"
+                                />
+                            ) : (
+                                <h1
+                                    className="font-bold text-3xl text-gray-900 cursor-pointer"
+                                    onClick={() => setEditingLastName(true)}
+                                >
+                                    {lastName}
+                                </h1>
+                            )}
+
+                            <p className="text-sm text-gray-400 font-medium">Career Title</p>
                             <p>
                                 <span></span>
                             </p>
                             <div className="my-5 px-6">
                                 <a href="#" className="text-gray-200 block rounded-lg text-center font-medium leading-6 px-6 py-3 bg-gray-900 hover:bg-black hover:text-white">
-                                    Connect with <span className="font-bold">@pantazisoft</span>
+                                    Connect with <span className="font-bold">@anth0ra</span>
                                 </a>
                             </div>
                             <div className="flex justify-between items-center my-5 px-6">
                                 <a href="" className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">
-                                    Facebook
+                                    LinkedIn
                                 </a>
                                 <a href="" className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">
-                                    Twitter
+                                    GitHub
                                 </a>
                                 <a href="" className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">
-                                    Instagram
+                                    Portfolio
                                 </a>
                                 <a href="" className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3">
                                     Email
