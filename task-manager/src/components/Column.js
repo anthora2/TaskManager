@@ -3,10 +3,15 @@ import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable"
 import { DndContext, KeyboardSensor, PointerSensor, TouchSensor, closestCorners, useSensor, useSensors } from "@dnd-kit/core"
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import Task from "./Task"
+import { useState } from "react";
 
+export default function Column({tasksInput}) {
 
-export default function Column({tasks}) {
-
+	const [tasks, setTasks] = useState([
+		{id: 1, title : "Add tasks to home page"},
+		{id: 2, title : "Eat good food"},
+		{id: 3, title : "get bitches"}
+	]);
 	const getTaskPos = id => tasks.findIndex(task =>
 		task.id === id)
 
