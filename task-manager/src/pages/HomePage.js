@@ -33,7 +33,10 @@
   }
   ```
 */
+
+
 import TaskBoard from '../components/taskBoard'
+import { TestBoard } from '../components/TestBoard'
 import { Fragment, useState } from 'react'
 import {
   Dialog,
@@ -58,6 +61,8 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import Board from '../components/Board'
+// import { TestBoard } from '../components/TestBoard'
 
 const navigation = [
   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
@@ -376,7 +381,8 @@ export default function Example() {
           </div>
 					{/* below is the part where we put the whole ass other component for the real task board*/}
           <main className="py-10">
-            <div className="px-4 sm:px-6 lg:px-8"> <TaskBoard/> </div>
+						<h1 className='text-center'> Project Name</h1>
+            <div className="px-4 sm:px-6 lg:px-8"> <TestBoard/> </div>
           </main>
         </div>
       </div>
